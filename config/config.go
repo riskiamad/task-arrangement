@@ -3,8 +3,6 @@ package config
 import (
 	"io"
 	"os"
-
-	"github.com/joho/godotenv"
 )
 
 var (
@@ -21,15 +19,11 @@ type config struct {
 	DbUser     string
 	DbPassword string
 	JwtSecret  string
+	APIBaseURL string
 }
 
 func loadConfig() *config {
 	c := new(config)
-
-	err := godotenv.Load()
-	if err != nil {
-		panic(err)
-	}
 
 	c.Host = os.Getenv("SERVER_HOST")
 	c.DbEngine = os.Getenv("DB_ENGINE")
@@ -38,6 +32,7 @@ func loadConfig() *config {
 	c.DbUser = os.Getenv("DB_USER")
 	c.DbPassword = os.Getenv("DB_PASS")
 	c.JwtSecret = os.Getenv("APP_JWT_SECRET")
+	c.APIBaseURL = os.Getenv("API_BASE_URL")
 
 	return c
 }
