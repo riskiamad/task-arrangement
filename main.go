@@ -19,7 +19,7 @@ func init() {
 func main() {
 	g := router.Router()
 
-	if err := g.Run(config.Config.Host); err != nil {
+	if err := g.Run(config.Config.Host + ":" + config.Config.Port); err != nil {
 		panic(err)
 	}
 

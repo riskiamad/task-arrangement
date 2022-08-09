@@ -13,6 +13,7 @@ var (
 
 type config struct {
 	Host       string
+	Port       string
 	DbEngine   string
 	DbHost     string
 	DbName     string
@@ -26,6 +27,7 @@ func loadConfig() *config {
 	c := new(config)
 
 	c.Host = os.Getenv("SERVER_HOST")
+	c.Port = os.Getenv("PORT")
 	c.DbEngine = os.Getenv("DB_ENGINE")
 	c.DbHost = os.Getenv("DB_HOST")
 	c.DbName = os.Getenv("DB_NAME")
